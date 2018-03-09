@@ -14,7 +14,7 @@ module Apruve
     end
 
     def self.find_all(merchant_id)
-      response = Apruve.get("merchants/#{merchant_id}/corporate_accounts")
+      response = Apruve.get("merchants/#{merchant_id}/corporate_accounts?per_page=50")
       response.body.map { |ca| CorporateAccount.new(ca.empty? ? {} : ca) }
     end
   end
